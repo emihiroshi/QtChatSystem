@@ -13,7 +13,7 @@ public:
     ~Widget();
 
 protected:
-    QLabel *m_seguchi;
+    QLabel *m_label;
 };
 
 #endif // WIDGET_H
