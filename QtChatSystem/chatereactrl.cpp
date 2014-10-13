@@ -6,28 +6,20 @@ chatEreaCtrl::chatEreaCtrl()
 
 void chatEreaCtrl::clear()
 {
-    m_chatList.clear();
+    m_allInfo.list.clear();
 }
 
-void chatEreaCtrl::write(const QString &str)
+void chatEreaCtrl::write(const QString &name, const QString &str)
 {
-    CHATINFO info;
-    info.time = QDateTime::currentDateTimeUtc();
-    info.str = str;
-    m_chatList.push_back(info);
+    CHAT_ONECE onece;
+    onece.time = QDateTime::currentDateTimeUtc();
+    onece.name = name;
+    onece.str = str;
+    m_allInfo.list.push_back(onece);
     emit strChanged();
 }
 
-QString chatEreaCtrl::read()
+chatEreaCtrl::CHAT_ALL_INFO& chatEreaCtrl::read(void)
 {
-    int i;
-    QString tmp;
-    for(i=0; i<m_chatList.count(); i++)
-    {
-        tmp += m_chatList.value(i).time.date().toString("yyyy/MM/dd ");
-        tmp += m_chatList.value(i).time.time().toString("hh:mm:ss ");
-        tmp += "\t";
-        tmp += m_chatList.value(i).str;
-    }
-    return tmp;
+    return m_allInfo;
 }

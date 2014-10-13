@@ -3,12 +3,11 @@
 
 #include "chatereactrl.h"
 #include <QWidget>
-#include <QLabel>
 #include <QPushButton>
 #include <QTextEdit>
 #include <QLayout>
-#include <QScrollArea>
 #include <QScrollBar>
+#include <QTextTable>
 
 class Widget : public QWidget
 {
@@ -25,8 +24,7 @@ public slots:
 protected:
     QHBoxLayout *m_layH;
     QVBoxLayout *m_layV;
-    QScrollArea *m_scrlErea;
-    QLabel *m_lblChatErea;
+    QTextEdit *m_edtChatErea;
     QPushButton *m_btnTrans;
     QTextEdit *m_edtText;
     chatEreaCtrl *m_buffer;

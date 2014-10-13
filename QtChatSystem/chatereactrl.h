@@ -11,29 +11,27 @@ class chatEreaCtrl : public QObject
     Q_OBJECT
 
 public:
-    typedef enum{
-        USERTYPE_OWNSELF,
-        USERTYPE_OTHER,
-        USERTYPE_ERROR
-    } USERTYPE;
+    typedef struct{
+        QDateTime time;
+        QString name;
+        QString str;
+    } CHAT_ONECE;
 
     typedef struct{
-        USERTYPE type;
-        QDateTime time;
-        QString str;
-    } CHATINFO;
+        QVector<CHAT_ONECE> list;
+    } CHAT_ALL_INFO;
 
 public:
     chatEreaCtrl();
     void clear(void);
-    void write(const QString& str);
-    QString read(void);
+    void write(const QString& name, const QString& str);
+    CHAT_ALL_INFO& read(void);
 
 signals:
     void strChanged(void);
 
 protected:
-    QVector<CHATINFO> m_chatList;
+    CHAT_ALL_INFO m_allInfo;
 };
 
 #endif // CHATEREACTRL_H
