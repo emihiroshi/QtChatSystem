@@ -1,10 +1,12 @@
 #include "widget.h"
+#include "chatereactrl.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Widget w;
+    chatEreaCtrl *buf = new chatEreaCtrl;
+    Widget w(buf);
     w.setGeometry(100,100,500,500);
     w.show();
 
