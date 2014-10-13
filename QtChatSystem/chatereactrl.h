@@ -3,10 +3,25 @@
 
 #include <QObject>
 #include <QString>
+#include <QVector>
+#include <QDateTime>
 
 class chatEreaCtrl : public QObject
 {
     Q_OBJECT
+
+public:
+    typedef enum{
+        USERTYPE_OWNSELF,
+        USERTYPE_OTHER,
+        USERTYPE_ERROR
+    } USERTYPE;
+
+    typedef struct{
+        USERTYPE type;
+        QDateTime time;
+        QString str;
+    } CHATINFO;
 
 public:
     chatEreaCtrl();
@@ -18,7 +33,7 @@ signals:
     void strChanged(void);
 
 protected:
-    QString m_buffer;
+    QVector<CHATINFO> m_chatList;
 };
 
 #endif // CHATEREACTRL_H
